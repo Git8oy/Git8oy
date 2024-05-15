@@ -1,0 +1,15 @@
+"""__App Name__ Calistair
+__version 0.1__
+__Maintainer__ - daniel.squire@justeattakeaway.com  
+__status__ prototype
+"""
+
+from testCanvasApi import getCanvasEvents
+from testGoogleApi import getGoogleEvents
+
+for c in getCanvasEvents():
+    for s in getGoogleEvents():
+        print(s)
+##create a file called test google api
+##Create event in and I will call this in the for loop
+##Get google events - exiting event and compare against what you already have
