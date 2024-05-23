@@ -1,0 +1,12 @@
+#global variable define google events array
+googleEvents=[] 
+
+#definte get google event method that returns all the events
+def getGoogleEvents():
+    return googleEvents
+
+def addEvent(myDate,myStatus,myEmail,myRoomBooking,myRepeat,myLocation,myVisibility,myTime):
+    event={'Date':myDate,'Status':myStatus,'Email':myEmail,'Room Booking':myRoomBooking, 'repeat':myRepeat, 'Location': myLocation,'Visibility':myVisibility,'Time':myTime}
+    googleEvents.append(event)
+
+addEvent(270124,'Available','bob.hardman@gmail.com','Y','Y','Cambridge', 'Visible', '13:00pm')
