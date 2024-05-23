@@ -1,0 +1,61 @@
+__appName__ = "Cali"
+__version__ = 0.1
+__Maintainer__ = "daniel.squire@justeattakeaway.com"  
+__status__ = "prototype"
+
+from CaliDataCanvasApi import getCanvasEvents
+from CaliDataGoogleApi import getGoogleEvents
+
+def print_welcome():
+    print("\nCalendar Synchronisation App- Version 1.0")
+    print("--------------------------------------------\n")
+
+print_welcome()
+
+def print_menu_options():
+    print("\nEnter your option from the list ")
+    print("--------------------------------------------")
+    print("Enter A  - Amend Meeting")
+    print("Enter U  - Update/Add Meeting Details")
+    print("Enter S  - Set Status")
+    print("Enter E  - Amend Email")
+    print("Enter V  - Amend Visibilty")
+    print("Enter D  - Delete Event - MANAGER ONLY FEATURE")
+    print("Enter DA - DATA ADMIN USERS ONLY")
+    print("Enter R  - Read Me")
+    print("Enter Q  - To Quit Application")
+    print("--------------------------------------------\n")
+
+print_menu_options()
+
+def get_valid_menu_choice():
+    valid_options = {'A', 'D', 'Q', 'V', 'E', 'DA', 'U', 'S', 'R'}
+
+    while True:
+        menu_choice = input("\nPlease enter your option > ").upper()
+        if menu_choice not in valid_options:
+            print("Sorry this is not a valid option")
+            continue
+        break
+    return menu_choice
+
+# Get all CanvasEvents and get all GoogleEvent and add the events to testGoogleApi
+# The application will always import all data from both testCanvasApi and testGoogleApi
+from CaliDataCanvasApi import getCanvasEvents
+from CaliDataGoogleApi import getGoogleEvents
+from CaliDataGoogleApi import addEvent
+
+
+# Add logic to check if the event exists already
+# Use start date, end date and Description to 
+# check if the event already exists in GoogleApi
+
+for c in getCanvasEvents():
+    addEvent(c["Date"],c["Status"],c["Email"],c["Room Booking"],c["repeat"],c["Location"],c["Visibility"],c["Time"])
+    # def addEvent(myDate,myStatus,myEmail,myRoomBooking,myRepeat,myLocation,myVisibility,myTime):
+    #'Date':myDate,'Status':myStatus,'Email':myEmail,'Room Booking':myRoomBooking, 'repeat':myRepeat, 'Location': myLocation,'Visibility':myVisibility,'Time':myTime
+
+for s in getGoogleEvents():    
+    print(s)
+
+ 
