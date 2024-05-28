@@ -1,0 +1,50 @@
+__appName__ = "Cali"
+__version__ = 0.1
+__Maintainer__ = "daniel.squire@justeattakeaway.com"  
+__status__ = "prototype"
+
+from CaliDataCanvasApi import getCanvasEvents
+from CaliDataCanvasApi import readCanvasEvents
+from CaliDataCanvasApi import quitCanvasEvents
+#from CaliDataGoogleApi import getGoogleEvents
+#from CaliDataGoogleApi import addEvent
+
+def print_welcome():
+    print("\nCalendar Synchronisation App- Version 1.0")
+    print("--------------------------------------------\n")
+
+def print_menu_options():
+    print("\nEnter your option from the list ")
+    print("--------------------------------------------")
+    print("Enter A  - Amend Meeting")
+    print("Enter U  - Add Visitor Details")
+    print("Enter S  - Set Status")
+    print("Enter E  - Amend Email")
+    print("Enter V  - Amend Visibilty")
+    print("Enter D  - Delete Event - MANAGER ONLY FEATURE")
+    print("Enter DA - DATA ADMIN USERS ONLY")
+    print("Enter R  - Read All Events")
+    print("Enter Q  - To Quit Application")
+    print("--------------------------------------------\n")
+
+def get_valid_menu_choice():
+    valid_options = {'A', 'D', 'Q', 'V', 'E', 'DA', 'U', 'S', 'R'}
+
+    while True:
+        menu_choice = input("\nPlease enter your option > ").upper()
+        if menu_choice not in valid_options:
+            print("Sorry this is not a valid option")
+            continue
+        break
+    return menu_choice
+    
+if __name__ == '__main__':
+    print_welcome()
+    print_menu_options()
+    option = get_valid_menu_choice()
+    if option == 'R':
+        readCanvasEvents()
+    option = get_valid_menu_choice()
+    if option == 'Q':
+        quitCanvasEvents()
+    option = get_valid_menu_choice()
