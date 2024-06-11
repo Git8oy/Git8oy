@@ -1,0 +1,67 @@
+__appName__ = "Cali"
+__version__ = 0.7
+__Maintainer__ = "daniel.squire@justeattakeaway.com"
+__status__ = "prototype"
+
+from CaliDataCanvasApi import createEvent
+from CaliDataCanvasApi import readCanvasEvents
+from CaliDataCanvasApi import deleteEvent
+from CaliDataCanvasApi import quitApplication
+from CaliDataCanvasApi import amendMeeting
+
+# Assuming amendMeeting is defined somewhere or imported correctly
+# from CaliDataCanvasApi import amendMeeting
+
+# Function to print the welcome message
+def print_welcome():
+    print("\nWelcome to Cali the Calendar Synchronisation App - Version 0.7")
+    print("--------------------------------------------\n")
+
+# Function to print the menu options
+def print_menu_options():
+    print("\nEnter your option from the list")
+    print("--------------------------------------------")
+    print("Enter C  - Create Event")
+    print("Enter A  - Amend Event")
+    print("Enter D  - Delete Event")
+    print("Enter R  - Read All Events")
+    print("Enter Q  - To Quit Application")
+    print("--------------------------------------------\n")
+
+# Function to get a valid menu choice from the user
+def get_valid_menu_choice():
+    valid_options = {'C', 'A', 'D', 'Q', 'R'}
+    while True:
+        menu_choice = input("\nPlease enter your option > ").upper()
+        if menu_choice not in valid_options:
+            print("Sorry, this is not a valid option")
+            continue
+        break
+    return menu_choice
+
+# Main application loop
+if __name__ == '__main__':
+    print_welcome()  # Print the welcome message
+    while True:
+        print_menu_options()  # Print the menu options
+        option = get_valid_menu_choice()  # Get a valid menu choice from the user
+        if option == 'C':
+            createEvent()  # Create a new event
+        elif option == 'A':
+            amendMeeting()  # Amend an existing meeting
+        elif option == 'D':
+            deleteEvent()  # Delete an event
+        elif option == 'R':
+            readCanvasEvents()  # Read and print all events
+        elif option == 'Q':
+            if quitApplication():  # Quit the application
+                print('Bye')
+                break
+
+# To do: 
+# 1. Add logic to validate the email is in an email format and return an error if not 
+# 2. Add logic to validate the room booking is either Y/N and return an error if not
+# 3. Amend the create and amend options to actually change/add data to the hardcoded data
+# 4. Add logic to validate the My Repeat is either Y/N and return an error if not
+# 5. Add logic to validate the MyVisibility is either Visible or Private and return an error if not
+# 6. Automated tests
