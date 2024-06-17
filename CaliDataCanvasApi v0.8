@@ -19,7 +19,7 @@ def createEvent():
     if not validateDate(myDate):  # Validating the date format
         print("Invalid date format or out of range.")
         return
-    myStatus = input("Enter status: ")
+    myStatus = input("Enter status (Accepted or Rejected):")
     if not validateStatus(myStatus):  # Validating the status
         print("Error invalid status. Status must be 'Accepted' or 'Rejected'.")
         return
@@ -139,4 +139,3 @@ for i in range(len(canvasEvents)):
     print(canvasEvents[i])
 
 getEventById (1)
-
